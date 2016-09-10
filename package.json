@@ -1,0 +1,23 @@
+{
+  "name": "splash-pages",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./**/*.es6  --out-dir .  -w -s --presets es2015"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdlx/splash-pages.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devdlx/splash-pages/issues"
+  },
+  "homepage": "https://github.com/devdlx/splash-pages#readme"
+}
