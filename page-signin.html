@@ -4,30 +4,30 @@
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-styles/paper-styles-classes.html">
 
-<link href="../dlx-styles/dlx-styles.html" rel="import">
+<link href="../splash-styles/splash-styles.html" rel="import">
 
-<link href="../dlx-firebase/dlx-firebase.html" rel="import">
-<link href="../dlx-block/dlx-block.html" rel="import">
-<link href="../dlx-input/dlx-input.html" rel="import">
-<link href="../dlx-button/dlx-button.html" rel="import">
-<link href="../dlx-tabs/dlx-tabs.html" rel="import">
-<link href="../dlx-tabs/dlx-tab.html" rel="import">
+<link href="../splash-firebase/splash-firebase.html" rel="import">
+<link href="../splash-block/splash-block.html" rel="import">
+<link href="../splash-input/splash-input.html" rel="import">
+<link href="../splash-button/splash-button.html" rel="import">
+<link href="../splash-tabs/splash-tabs.html" rel="import">
+<link href="../splash-tabs/splash-tab.html" rel="import">
 
 <!--
-<link rel="import" href="dlx-category-data.html">
-<link rel="import" href="dlx-common-styles.html">
-<link rel="import" href="dlx-block.html">
-<link rel="import" href="dlx-select.html"> -->
+<link rel="import" href="splash-category-data.html">
+<link rel="import" href="splash-common-styles.html">
+<link rel="import" href="splash-block.html">
+<link rel="import" href="splash-select.html"> -->
 <!-- <script src="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.js"></script> -->
 
 <dom-module id="page-signin">
 
     <template>
 
-        <style include="dlx-common-styles dlx-input dlx-button">
+        <style include="splash-common-styles splash-input splash-button">
             :host {
                 display: block;
-                --dlx-video-height: calc(100vw / 1.78);
+                --splash-video-height: calc(100vw / 1.78);
             }
 
             #content {
@@ -131,7 +131,7 @@
                 margin-top: 16px;
             }
 
-            dlx-select> select {
+            splash-select> select {
                 font-size: 16px;
                 padding: 16px 24px 16px 70px;
             }
@@ -152,10 +152,10 @@
                     /*z-index: 1;*/
                 }
                 .page-user-player {
-                    height: var(--dlx-video-height);
+                    height: var(--splash-video-height);
                 }
                 #content {
-                    /*margin-top: var(--dlx-video-height);*/
+                    /*margin-top: var(--splash-video-height);*/
                 }
                 .detail {
                     box-sizing: border-box;
@@ -195,7 +195,7 @@
         <!--   app-route provides the name of the category and the item.    -->
         <app-route route="[[route]]" pattern="/:action" data="{{routeDataDetail}}"></app-route>
 
-        <dlx-firebase id="auth" user="{{user}}" signed-in="{{signedIn}}"></dlx-firebase>
+        <splash-firebase id="auth" user="{{user}}" signed-in="{{signedIn}}"></splash-firebase>
 
         <paper-spinner-lite active="[[waiting]]"></paper-spinner-lite>
 
@@ -210,23 +210,23 @@
                         <div class="meta-text">{{user.email}}</div>
                     </div>
                     <div class="meta-image">
-                        <dlx-block alt="[[user.meta]] [[user.title]]" src="[[user.poster_path]]"></dlx-block>
+                        <splash-block alt="[[user.meta]] [[user.title]]" src="[[user.poster_path]]"></splash-block>
                     </div>
                 </div>
 
 
                 <div id="tabContainer">
-                    <dlx-tabs selected="{{page}}" attr-for-selected="name">
-                        <dlx-tab name="provider">
+                    <splash-tabs selected="{{page}}" attr-for-selected="name">
+                        <splash-tab name="provider">
                             <a href="">Provider</a>
-                        </dlx-tab>
-                        <dlx-tab name="signin">
+                        </splash-tab>
+                        <splash-tab name="signin">
                             <a href="">Sign In</a>
-                        </dlx-tab>
-                        <dlx-tab name="create">
+                        </splash-tab>
+                        <splash-tab name="create">
                             <a href="">Create</a>
-                        </dlx-tab>
-                    </dlx-tabs>
+                        </splash-tab>
+                    </splash-tabs>
                 </div>
 
 
@@ -268,27 +268,27 @@
 
                     <form id="signinForm" name="signin" is="iron-form" method="post" action="/" on-iron-form-presubmit="_willSendSignin">
                         <div class="signin-form-container">
-                            <dlx-input>
+                            <splash-input>
                                 <input type="email" value="{{email}}" id="accountEmail" name="accountEmail" placeholder="Email" autofocus required aria-labelledby="accountEmailLabel accountInfoHeading">
-                                <dlx-md-decorator error-message="Invalid Email" aria-hidden="true">
+                                <splash-md-decorator error-message="Invalid Email" aria-hidden="true">
                                     <label id="accountEmailLabel">Email</label>
-                                    <dlx-underline></dlx-underline>
-                                </dlx-md-decorator>
-                            </dlx-input>
+                                    <splash-underline></splash-underline>
+                                </splash-md-decorator>
+                            </splash-input>
 
-                            <dlx-input>
+                            <splash-input>
                                 <input type="password" value="{{password}}" id="accountPassword" name="accountPassword" placeholder="Password" autofocus required aria-labelledby="accountPasswordLabel accountInfoHeading">
-                                <dlx-md-decorator error-message="Invalid Password" aria-hidden="true">
+                                <splash-md-decorator error-message="Invalid Password" aria-hidden="true">
                                     <label id="accountPasswordLabel">Password</label>
-                                    <dlx-underline></dlx-underline>
-                                </dlx-md-decorator>
-                            </dlx-input>
+                                    <splash-underline></splash-underline>
+                                </splash-md-decorator>
+                            </splash-input>
 
                             <br>
 
-                            <dlx-button responsive id="submitSigninBox">
+                            <splash-button responsive id="submitSigninBox">
                                 <input type="button" on-click="_submitSignin" value="Sign in">
-                            </dlx-button>
+                            </splash-button>
 
                         </div>
                     </form>
@@ -298,35 +298,35 @@
                     <form id="createForm" name="create" is="iron-form" method="post" action="/" on-iron-form-presubmit="_willSendCreate">
                         <div class="signin-form-container">
 
-                            <dlx-input>
+                            <splash-input>
                                 <input type="email" value="{{email}}" id="accountEmail" name="accountEmail" placeholder="Email" autofocus required aria-labelledby="accountEmailLabel accountInfoHeading">
-                                <dlx-md-decorator error-message="Invalid Email" aria-hidden="true">
+                                <splash-md-decorator error-message="Invalid Email" aria-hidden="true">
                                     <label id="accountEmailLabel">Email</label>
-                                    <dlx-underline></dlx-underline>
-                                </dlx-md-decorator>
-                            </dlx-input>
+                                    <splash-underline></splash-underline>
+                                </splash-md-decorator>
+                            </splash-input>
 
-                            <dlx-input>
+                            <splash-input>
                                 <input type="password" value="{{password}}" id="accountPassword" name="accountPassword" placeholder="Password" autofocus required aria-labelledby="accountPasswordLabel accountInfoHeading">
-                                <dlx-md-decorator error-message="Invalid Password" aria-hidden="true">
+                                <splash-md-decorator error-message="Invalid Password" aria-hidden="true">
                                     <label id="accountPasswordLabel">Password</label>
-                                    <dlx-underline></dlx-underline>
-                                </dlx-md-decorator>
-                            </dlx-input>
+                                    <splash-underline></splash-underline>
+                                </splash-md-decorator>
+                            </splash-input>
 
-                            <dlx-input>
+                            <splash-input>
                                 <input type="password" value="{{password2}}" id="accountPassword2" name="accountPassword2" placeholder="Password" autofocus required aria-labelledby="accountPassword2Label accountInfoHeading">
-                                <dlx-md-decorator error-message="Passwords Dont Match" aria-hidden="true">
+                                <splash-md-decorator error-message="Passwords Dont Match" aria-hidden="true">
                                     <label id="accountPassword2Label">Password Match</label>
-                                    <dlx-underline></dlx-underline>
-                                </dlx-md-decorator>
-                            </dlx-input>
+                                    <splash-underline></splash-underline>
+                                </splash-md-decorator>
+                            </splash-input>
 
                             <br>
 
-                            <dlx-button responsive id="submitCreateBox">
+                            <splash-button responsive id="submitCreateBox">
                                 <input type="button" on-click="_submitCreate" value="Create">
-                            </dlx-button>
+                            </splash-button>
 
                         </div>
                     </form>
@@ -339,13 +339,13 @@
                 </div>
 
 
-                <!-- <dlx-button responsive>
+                <!-- <splash-button responsive>
                     <button on-tap="_addToCart" aria-label="Add this item to cart">Add to Cart</a>
-                </dlx-button> -->
+                </splash-button> -->
             </div>
 
             <!-- <div class="login-image-container">
-                <dlx-block src="{{user.displayImage}}" text="text"></dlx-block>
+                <splash-block src="{{user.displayImage}}" text="text"></splash-block>
             </div> -->
 
         </div>
@@ -354,7 +354,7 @@
             <div class="detail2">
                 <div class="meta-container">
                   <div class="meta-image">
-                      <dlx-block alt="[[user.meta]] [[user.title]]" src="[[user.photoURL]]"></dlx-block>
+                      <splash-block alt="[[user.meta]] [[user.title]]" src="[[user.photoURL]]"></splash-block>
                   </div>
                     <div class="meta-data">
                         <h1>[[user.displayName]]</h1>
@@ -369,7 +369,7 @@
 
 
 
-        <dlx-network-warning hidden$="[[!failure]]" offline="[[offline]]" on-try-reconnect="_tryReconnect"></dlx-network-warning>
+        <splash-network-warning hidden$="[[!failure]]" offline="[[offline]]" on-try-reconnect="_tryReconnect"></splash-network-warning>
 
     </template>
 
@@ -438,8 +438,8 @@
             },
 
             listeners: {
-                'dlx-firebase-auth-error': 'onError',
-                'dlx-firebase-auth-signedin': 'onSignedin'
+                'splash-firebase-auth-error': 'onError',
+                'splash-firebase-auth-signedin': 'onSignedin'
 
             },
             observers: [

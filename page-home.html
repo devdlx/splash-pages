@@ -3,18 +3,18 @@
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
-<!-- <link rel="import" href="dlx-button.html"> -->
-<link rel="import" href="../dlx-block/dlx-block.html">
-<link rel="import" href="../dlx-input/dlx-input.html">
-<link rel="import" href="../dlx-firebase/dlx-firebase.html">
-<!-- <link rel="import" href="../dlx-soundcloud/dlx-soundcloud.html"> -->
+<!-- <link rel="import" href="splash-button.html"> -->
+<link rel="import" href="../splash-block/splash-block.html">
+<link rel="import" href="../splash-input/splash-input.html">
+<link rel="import" href="../splash-firebase/splash-firebase.html">
+<!-- <link rel="import" href="../splash-soundcloud/splash-soundcloud.html"> -->
 <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 
 <dom-module id="page-home">
 
     <template>
 
-        <style include="dlx-button dlx-input">
+        <style include="splash-button splash-input">
             :host {
                 display: block;
                 min-height: calc(100vh+ 64px);
@@ -31,7 +31,7 @@
                 padding: 0 16px 0 16px
             }
 
-            .item-link> dlx-block::after {
+            .item-link> splash-block::after {
                 display: block;
                 content: '';
                 position: absolute;
@@ -49,12 +49,12 @@
                 outline: -webkit-focus-ring-color auto 5px;
             }
 
-            .item-link:focus> dlx-block::after {
+            .item-link:focus> splash-block::after {
                 opacity: 1;
             }
 
-            dlx-block {
-                --dlx-block-text: {
+            splash-block {
+                --splash-block-text: {
                     color: white;
                     background: rgba(0, 0, 0, 0.33);
                 }
@@ -74,12 +74,12 @@
                 line-height: 24px;
             }
 
-            dlx-input,
-            dlx-select {
+            splash-input,
+            splash-select {
                 font-size: 16px;
             }
 
-            dlx-select {
+            splash-select {
                 margin-bottom: 20px;
             }
 
@@ -114,7 +114,7 @@
                 margin-left: 8px;
             }
 
-            .dlx-select-label {
+            .splash-select-label {
                 line-height: 20px;
             }
 
@@ -165,9 +165,9 @@
 
         <app-route route="[[route]]" data="{{routeDataDetail}}"></app-route>
 
-        <dlx-firebase id="dlxfirebase" query="/items" items="{{items}}"></dlx-firebase>
+        <splash-firebase id="dlxfirebase" query="/items" items="{{items}}"></splash-firebase>
 
-        <!-- <dlx-soundcloud id="dlxsoundcloud"></dlx-soundcloud> -->
+        <!-- <splash-soundcloud id="dlxsoundcloud"></splash-soundcloud> -->
         <!-- <iron-ajax auto url="https://api.soundcloud.com/tracks?client_id=" params='{"part":"snippet", "q":"polymer", "key": "AIzaSyAuecFZ9xJXbGDkQYWBmYrtzOGJD-iDIgI", "type": "video"}' handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax> -->
 
 
@@ -181,9 +181,9 @@
             <div class="layout vertical" page="home" class="section">
                 <template is="dom-repeat" items="[[items]]" strip-whitespace>
                     <a class="item-link" href="{{item.link}}">
-                        <dlx-block alt="[[item.title]]" placeholder-img="" image="{{item.image}}">
+                        <splash-block alt="[[item.title]]" placeholder-img="" image="{{item.image}}">
                             <h1 bottom>{{item.title}}</h1>
-                        </dlx-block>
+                        </splash-block>
                     </a>
                 </template>
             </div>
@@ -202,16 +202,16 @@
                             <h2 id="accountInfoHeading">Import From Link</h2>
                             <div class="row input-row">
                                 <div class="layout horizontal">
-                                    <dlx-input class="flex-1">
+                                    <splash-input class="flex-1">
                                         <input type="text" id="itemLink" name="itemLink" placeholder="Link" autofocus aria-labelledby="itemLinkLabel accountInfoHeading" value="{{link::input}}">
-                                        <dlx-md-decorator error-message="Invalid Link" aria-hidden="true">
+                                        <splash-md-decorator error-message="Invalid Link" aria-hidden="true">
                                             <label id="itemLinkLabel">Link</label>
-                                            <dlx-underline></dlx-underline>
-                                        </dlx-md-decorator>
-                                    </dlx-input>
-                                    <dlx-button id="importButton">
+                                            <splash-underline></splash-underline>
+                                        </splash-md-decorator>
+                                    </splash-input>
+                                    <splash-button id="importButton">
                                         <input type="button" on-click="_import" value="Import" disabled$="[[importNotReady]]">
-                                    </dlx-button>
+                                    </splash-button>
                                 </div>
                             </div>
                         </section>
@@ -221,16 +221,16 @@
                         <section>
                             <h2>Image</h2>
                             <div class="row input-row">
-                                <dlx-block class="save-image" alt="[[item.title]]" placeholder-img="" image="{{save.image}}"></dlx-block>
+                                <splash-block class="save-image" alt="[[item.title]]" placeholder-img="" image="{{save.image}}"></splash-block>
                             </div>
                             <div class="row input-row">
-                                <dlx-input>
+                                <splash-input>
                                     <input type="text" id="itemImage" name="itemImage" placeholder="Image" required autocomplete="item-image" value="{{save.image::input}}">
-                                    <dlx-md-decorator error-message="Invalid Image" aria-hidden="true">
+                                    <splash-md-decorator error-message="Invalid Image" aria-hidden="true">
                                         <label for="itemImage">Image</label>
-                                        <dlx-underline></dlx-underline>
-                                    </dlx-md-decorator>
-                                </dlx-input>
+                                        <splash-underline></splash-underline>
+                                    </splash-md-decorator>
+                                </splash-input>
                             </div>
                         </section>
 
@@ -240,32 +240,32 @@
 
 
                             <div class="row input-row">
-                                <dlx-input>
+                                <splash-input>
                                     <input type="text" id="itemTitle" name="itemTitle" placeholder="Title" required autocomplete="item-title" value="{{save.title::input}}">
-                                    <dlx-md-decorator error-message="Invalid Title" aria-hidden="true">
+                                    <splash-md-decorator error-message="Invalid Title" aria-hidden="true">
                                         <label for="itemTitle">Title</label>
-                                        <dlx-underline></dlx-underline>
-                                    </dlx-md-decorator>
-                                </dlx-input>
+                                        <splash-underline></splash-underline>
+                                    </splash-md-decorator>
+                                </splash-input>
 
                             </div>
 
                             <div class="row input-row">
                                 <div class="column">
-                                    <dlx-input>
+                                    <splash-input>
                                         <textarea rows="4" id="itemDescription" name="itemDescription" placeholder="Description" autocomplete="item-description" value="{{save.description::input}}"></textarea>
-                                        <dlx-md-decorator error-message="Invalid Description" aria-hidden="true">
+                                        <splash-md-decorator error-message="Invalid Description" aria-hidden="true">
                                             <!-- <label for="itemDescription">Description</label> -->
-                                            <dlx-underline></dlx-underline>
-                                        </dlx-md-decorator>
-                                    </dlx-input>
+                                            <splash-underline></splash-underline>
+                                        </splash-md-decorator>
+                                    </splash-input>
                                 </div>
                             </div>
 
                             <!-- <div class="row input-row">
                                 <div class="column">
                                     <label for="ccExpMonth">Expiry</label>
-                                    <dlx-select>
+                                    <splash-select>
                                         <select id="ccExpMonth" name="ccExpMonth" required autocomplete="cc-exp-month" aria-label="Expiry month">
                                             <option value="01" selected>Jan</option>
                                             <option value="02">Feb</option>
@@ -280,12 +280,12 @@
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
                                         </select>
-                                        <dlx-md-decorator aria-hidden="true">
-                                            <dlx-underline></dlx-underline>
-                                        </dlx-md-decorator>
-                                    </dlx-select>
+                                        <splash-md-decorator aria-hidden="true">
+                                            <splash-underline></splash-underline>
+                                        </splash-md-decorator>
+                                    </splash-select>
                                 </div>
-                                <dlx-select>
+                                <splash-select>
                                     <select id="ccExpYear" name="ccExpYear" required autocomplete="cc-exp-year" aria-label="Expiry year">
                                         <option value="2016" selected>2016</option>
                                         <option value="2017">2017</option>
@@ -299,25 +299,25 @@
                                         <option value="2025">2025</option>
                                         <option value="2026">2026</option>
                                     </select>
-                                    <dlx-md-decorator aria-hidden="true">
-                                        <dlx-underline></dlx-underline>
-                                    </dlx-md-decorator>
-                                </dlx-select>
-                                <dlx-input>
+                                    <splash-md-decorator aria-hidden="true">
+                                        <splash-underline></splash-underline>
+                                    </splash-md-decorator>
+                                </splash-select>
+                                <splash-input>
                                     <input type="tel" id="ccCVV" name="ccCVV" pattern="\d{3,4}" placeholder="CVV" required autocomplete="cc-csc">
-                                    <dlx-md-decorator error-message="Invalid CVV" aria-hidden="true">
+                                    <splash-md-decorator error-message="Invalid CVV" aria-hidden="true">
                                         <label for="ccCVV">CVV</label>
-                                        <dlx-underline></dlx-underline>
-                                    </dlx-md-decorator>
-                                </dlx-input>
+                                        <splash-underline></splash-underline>
+                                    </splash-md-decorator>
+                                </splash-input>
                             </div> -->
                             <!-- <h2>Order Summary</h2> -->
                         </section>
                     </div>
 
-                    <dlx-button responsive id="savbtn" hidden$="[[_computeSaveShow(changes)]]">
+                    <splash-button responsive id="savbtn" hidden$="[[_computeSaveShow(changes)]]">
                         <input type="button" on-click="_save" value="Save">
-                    </dlx-button>
+                    </splash-button>
                 </form>
             </div>
 

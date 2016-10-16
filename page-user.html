@@ -6,22 +6,22 @@
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-styles/paper-styles-classes.html">
 
-<link href="../dlx-block/dlx-block.html" rel="import">
+<!--<link href="../splash-block/splash-block.html" rel="import">-->
 
 <!-- <link rel="import" href="shop-button.html">
 <link rel="import" href="shop-category-data.html">
 <link rel="import" href="shop-common-styles.html">
-<link rel="import" href="dlx-block.html">
+<link rel="import" href="splash-block.html">
 <link rel="import" href="shop-select.html"> -->
 
 <dom-module id="page-user">
 
     <template>
 
-        <style include="dlx-common-styles">
+        <style include="splash-common-styles">
             :host {
                 display: block;
-                --dlx-video-height: calc(100vw / 1.78);
+                --splash--video-height: calc(100vw / 1.78);
             }
 
             #content {
@@ -37,11 +37,11 @@
                 /*width: 60%;*/
             }
 
-            dlx-block {
+            splash--block {
                 height: 48vh;
             }
 
-            dlx-blockFFF::before {
+            splash--blockFFF::before {
                 content: "";
                 display: block;
                 padding-top: 100%;
@@ -146,7 +146,7 @@
                     z-index: 1;
                 }
                 #content {
-                    /*margin-top: var(--dlx-video-height);*/
+                    /*margin-top: var(--splash--video-height);*/
                 }
                 .detail {
                     box-sizing: border-box;
@@ -194,10 +194,10 @@
 
 
         <div id="content" hidden$="[[failure]]">
-            <!--       <dlx-block alt="[[item.title]]" src="[[item.largeImage]]"></dlx-block> -->
+            <!--       <splash--block alt="[[item.title]]" src="[[item.largeImage]]"></splash--block> -->
 
             <div class="user-image-container">
-                <dlx-block src="{{user.photoURL}}" textFFF="{{user.displayName}}"></dlx-block>
+                <splash--block src="{{user.photoURL}}" textFFF="{{user.displayName}}"></splash--block>
             </div>
 
 
@@ -210,7 +210,7 @@
                         <div class="meta-text">[[user.photoURL]]</div>
                     </div>
                     <!-- <div class="meta-image">
-                        <dlx-block alt="[[user.meta]] [[user.title]]" src="[[user.poster_path]]"></dlx-block>
+                        <splash--block alt="[[user.meta]] [[user.title]]" src="[[user.poster_path]]"></splash--block>
                     </div> -->
                 </div>
 
@@ -279,8 +279,8 @@
                 }
 
 
-                // this.importHref(["dlx/dlx-video.html"], function() {
-                //     console.log(dlxVideo);
+                // this.importHref(["splash-/splash--video.html"], function() {
+                //     console.log(splash-Video);
                 // });
 
 
